@@ -2,12 +2,6 @@ import pandas as pd
 
 trips = pd.read_csv(r"C:\Repositories for Git\uber-trips-analysis-folder\uber-raw-data-sep14.csv")
 
-row_10 = trips.iloc[9]
-print(row_10)
-
-for n in range(1,10,1):
-    print(trips.iloc[n])
-
 
 #Problem 1: find busiest date
 
@@ -32,7 +26,17 @@ least_busy_date_message = f"The least date was {least_busy_date}. It had {least_
 print(least_busy_date_message)
 
 # Problem 3: Find Busiest hours of the day
-# LEFT OFF
+trips['Time'] = trips['Date/Time'].apply(lambda n: n.split(' ')[1])
+#build column 'Time' as the time of the trip 
+
+busiest_minute = trips['Time'].value_counts().idxmax()
+trips_during_busiest_minute = trips['Time'].value_counts().iloc[0]
+
+busiest_minute_message = f"The busiest minute was {busiest_minute}. Across the dataset, there were {trips_during_busiest_minute} that time."
+
+print(busiest_minute_message)
+
+# Expected is 18:12:00    1380
 
 # Problem 4: Find Slowest hours of the day
 
