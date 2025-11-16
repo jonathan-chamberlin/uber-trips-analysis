@@ -44,13 +44,29 @@ least_busy_minute_message = f"The least busy minute was {least_busy_minute}. Acr
 
 print(least_busy_minute_message)
 
+# Problem 5: Find busiest hour
 
+trips['Hour'] = trips['Time'].apply(lambda n: n.split(':')[0])
 
-# Problem 6: Find Standard deviation of trip frequency (consistency)
+'''Test to verify that I created the Hour column correctly
+for n in range(1,100,1):
+    message = f"Time is {trips.iloc[n]['Time']}, and hour is {trips.iloc[n]['Hour']}"
+    print(message)
+'''
 
-# Problem 7: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
+busiest_hour = trips['Hour'].value_counts().idxmax()
+busiest_hour_value = trips['Hour'].value_counts().max()
 
-# Problem 8: Create Heatmap of trips by hour and day of week, where the x axis is days of the week and the y axis is hour of the day, and there are cells with the cumulative total of trips taken that weekday and within that hour. Then color the cells based on value, where the lowest are red, average are white, and darkest are green.
+busiest_hour_message = f"The busiest hour of the day was {busiest_hour}, and {busiest_hour_value} trips happened that hour."
+print(busiest_hour_message)
+
+# Problem 6: Find least busty hour
+
+# Problem 7: Find Standard deviation of trip frequency (consistency)
+
+# Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
+
+# Problem 9: Create Heatmap of trips by hour and day of week, where the x axis is days of the week and the y axis is hour of the day, and there are cells with the cumulative total of trips taken that weekday and within that hour. Then color the cells based on value, where the lowest are red, average are white, and darkest are green.
 
 
 
