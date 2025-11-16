@@ -41,12 +41,8 @@ def date_format(date: str) -> str:
     return formatted_date
 
 
-
-
-
-
 trips['Date'] = trips['Date/Time'].apply(lambda n: date_format(n.split(' ')[0]))
-    # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format.
+    # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format. Assumes all years are 4 digits. 
 
 busiest_date = trips['Date'].value_counts().idxmax()
 most_trips_in_one_day = trips['Date'].value_counts().iloc[0]
