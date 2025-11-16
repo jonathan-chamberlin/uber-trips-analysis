@@ -99,13 +99,13 @@ print(least_busy_hour_message)
 trips_per_day = trips['Date'].value_counts().sort_index()
 mean_trips_per_day = trips_per_day.mean()
 median_trips_per_day = trips_per_day.median()
-std_dev_of_trip_per_day = trips_per_day.std()
+std_dev_of_trip_per_day = trips_per_day.std() 
 
 std_dev_of_trip_per_day = trips_per_day.std()
 # max: busiest_date_value
 # min: least_busy_date_value
 
-overall_stats_message = f"Mean trips per day: {mean_trips_per_day}\nMedian Trips per Day: {median_trips_per_day}\nStandard Deviation of Trips per Day: {std_dev_of_trip_per_day}\nMost Trips in One Day: {busiest_date_value}\nFewest Trips in One Day: {least_busy_date_value}"
+overall_stats_message = f"Mean trips per day: {mean_trips_per_day}\nMedian Trips per Day: {median_trips_per_day}\nStandard Deviation of Trips per Day: {std_dev_of_trip_per_day:.2f}\nMost Trips in One Day: {busiest_date_value}\nFewest Trips in One Day: {least_busy_date_value}"
 
 print(overall_stats_message)
 
