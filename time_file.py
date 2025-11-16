@@ -31,13 +31,15 @@ def date_format(date: str) -> str:
     day = split_date[1]
     year = split_date[2]
     
-    "NOW THAT i have each month, day, and year in their own variables, now check lenght of each month and day, and if they're one character long, append a 0 before each. THen finally rearrange the order of the values"
+    if len(month) == 1:
+        month = f"0{month}"
+    if len(day) == 1:
+        day = f"0{day}"
     
+    formatted_date = f"{year}/{month}/{day}"
     
-    
-    
-    
-    
+    return formatted_date
+
 
 
 
