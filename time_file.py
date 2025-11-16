@@ -5,7 +5,43 @@ trips = pd.read_csv(r"C:\Repositories for Git\uber-trips-analysis-folder\uber-ra
 
 #Problem 1: find busiest date
 
-trips_by_day = trips.groupby('Date/Time')
+trips_by_date_time = trips.groupby('Date/Time')
+
+
+
+
+'''assert date_format("9/3/2014") == "2014/09/03"
+assert date_format("9/15/2014") == "2014/09/15"
+assert date_format("10/3/2014") == "2014/10/03"
+assert date_format("10/20/2014") == "2014/10/20"'''
+
+te = "09/03/2024".split("/")
+print(te)
+print(te[0])
+print(te[1])
+print(te[2])
+
+
+
+def date_format(date: str) -> str:
+    '''Takes a date in the format of M/D/YYYY, and converts it into YYYY/MM/DD. It makes it so if the month or day are a single digit, you add a zero before them'''
+    
+    split_date = date.split("/")
+    month = split_date[0]
+    day = split_date[1]
+    year = split_date[2]
+    
+    "NOW THAT i have each month, day, and year in their own variables, now check lenght of each month and day, and if they're one character long, append a 0 before each. THen finally rearrange the order of the values"
+    
+    
+    
+    
+    
+    
+
+
+
+
 
 trips['Date'] = trips['Date/Time'].apply(lambda n: n.split(' ')[0])
     # Builds a column to the trips table
@@ -73,6 +109,11 @@ least_busy_hour_message = f"The least busy hour of the day was {least_busy_hour}
 print(least_busy_hour_message)
 
 # Problem 7: Find Standard deviation of trip frequency (consistency)
+
+# trips_per_day = trips.groupby('Date').sum()
+trips_per_day = trips['Date'].value_counts().sort_index()
+
+# print(trips_per_day)
 
 # Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
 
