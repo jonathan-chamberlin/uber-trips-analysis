@@ -36,17 +36,17 @@ trips['Date'] = trips['Date/Time'].apply(lambda n: date_format(n.split(' ')[0]))
     # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format. Assumes all years are 4 digits.
 
 busiest_date = trips['Date'].value_counts().idxmax()
-most_trips_in_one_day = trips['Date'].value_counts().iloc[0]
+busiest_date_value = trips['Date'].value_counts().iloc[0]
 
-busiest_day_message = f"The busiest date was {busiest_date}. It had {most_trips_in_one_day} trips."
+busiest_day_message = f"The busiest date was {busiest_date}. It had {busiest_date_value} trips."
 
 print(busiest_day_message)
 
 # Problem 2: Find time with lowest number of rides
 least_busy_date = trips['Date'].value_counts().idxmin()
-least_trips_in_one_day = trips['Date'].value_counts().min()
+least_busy_date_value = trips['Date'].value_counts().min()
 
-least_busy_date_message = f"The least date was {least_busy_date}. It had {least_trips_in_one_day} trips."
+least_busy_date_message = f"The least date was {least_busy_date}. It had {least_busy_date_value} trips."
 
 print(least_busy_date_message)
 
@@ -90,19 +90,24 @@ print(busiest_hour_message)
 least_busy_hour = trips['Hour'].value_counts().idxmin()
 least_busy_hour_value = trips['Hour'].value_counts().min()
 
-print(least_busy_hour)
-print(least_busy_hour_value)
-
 least_busy_hour_message = f"The least busy hour of the day was {least_busy_hour}, and {least_busy_hour_value} trips happened that hour."
 
 print(least_busy_hour_message)
 
 # Problem 7: Find Standard deviation of trip frequency (consistency)
 
-# trips_per_day = trips.groupby('Date').sum()
 trips_per_day = trips['Date'].value_counts().sort_index()
+mean_trips_per_day = trips_per_day.mean()
+median_trips_per_day = trips_per_day.median()
+std_dev_of_trip_per_day = trips_per_day.std()
 
-print(trips_per_day)
+std_dev_of_trip_per_day = trips_per_day.std()
+# max: busiest_date_value
+# min: least_busy_date_value
+
+overall_stats_message = f"Mean trips per day: {mean_trips_per_day}\nMedian Trips per Day: {median_trips_per_day}\nStandard Deviation of Trips per Day: {std_dev_of_trip_per_day}\nMost Trips in One Day: {busiest_date_value}\nFewest Trips in One Day: {least_busy_date_value}"
+
+print(overall_stats_message)
 
 # Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
 
