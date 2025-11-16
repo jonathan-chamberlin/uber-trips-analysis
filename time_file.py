@@ -7,21 +7,12 @@ trips = pd.read_csv(r"C:\Repositories for Git\uber-trips-analysis-folder\uber-ra
 
 trips_by_date_time = trips.groupby('Date/Time')
 
-
-
-
-'''assert date_format("9/3/2014") == "2014/09/03"
-assert date_format("9/15/2014") == "2014/09/15"
-assert date_format("10/3/2014") == "2014/10/03"
-assert date_format("10/20/2014") == "2014/10/20"'''
-
-te = "09/03/2024".split("/")
+'''I used this to check my understanding of the .split() function
+te = "09/03/2024".split("/"), and ultimately to create date_format
 print(te)
 print(te[0])
 print(te[1])
-print(te[2])
-
-
+print(te[2])'''
 
 def date_format(date: str) -> str:
     '''Takes a date in the format of M/D/YYYY, and converts it into YYYY/MM/DD. It makes it so if the month or day are a single digit, you add a zero before them'''
@@ -42,7 +33,7 @@ def date_format(date: str) -> str:
 
 
 trips['Date'] = trips['Date/Time'].apply(lambda n: date_format(n.split(' ')[0]))
-    # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format. Assumes all years are 4 digits. 
+    # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format. Assumes all years are 4 digits.
 
 busiest_date = trips['Date'].value_counts().idxmax()
 most_trips_in_one_day = trips['Date'].value_counts().iloc[0]
@@ -111,7 +102,7 @@ print(least_busy_hour_message)
 # trips_per_day = trips.groupby('Date').sum()
 trips_per_day = trips['Date'].value_counts().sort_index()
 
-# print(trips_per_day)
+print(trips_per_day)
 
 # Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
 
