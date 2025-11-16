@@ -60,7 +60,17 @@ busiest_hour_value = trips['Hour'].value_counts().max()
 busiest_hour_message = f"The busiest hour of the day was {busiest_hour}, and {busiest_hour_value} trips happened that hour."
 print(busiest_hour_message)
 
-# Problem 6: Find least busty hour
+# Problem 6: Find least busy hour
+
+least_busy_hour = trips['Hour'].value_counts().idxmin()
+least_busy_hour_value = trips['Hour'].value_counts().min()
+
+print(least_busy_hour)
+print(least_busy_hour_value)
+
+least_busy_hour_message = f"The least busy hour of the day was {least_busy_hour}, and {least_busy_hour_value} trips happened that hour."
+
+print(least_busy_hour_message)
 
 # Problem 7: Find Standard deviation of trip frequency (consistency)
 
