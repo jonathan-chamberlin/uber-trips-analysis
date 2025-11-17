@@ -37,6 +37,7 @@ def date_format(date: str) -> str:
 trips['Date'] = trips['Date/Time'].apply(lambda n: date_format(n.split(' ')[0]))
     # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format. Assumes all years are 4 digits.
 
+
 busiest_date = trips['Date'].value_counts().idxmax()
 busiest_date_value = trips['Date'].value_counts().iloc[0]
 
@@ -113,10 +114,23 @@ print(overall_stats_message)
 
 # Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
 
+"""
 trips_per_day.plot.bar()
 plt.show()
+"""
 
 # Problem 9: Create Heatmap of trips by hour and day of week, where the x axis is days of the week and the y axis is hour of the day, and there are cells with the cumulative total of trips taken that weekday and within that hour. Then color the cells based on value, where the lowest are red, average are white, and darkest are green.
+
+# find the name of a chart or display that could do this
+
+# add column for weekday
+
+trips['Weekday'] = trips['Date'].apply(lambda n: pd.to_datetime(n).day_name())
+# ^ LEFT OFF at this point the code is taking a while to run and the thing below is not printing. So my goal is to complete the operation of adding a column for the Weekday. I should try it on just a few rows to make sure it works befroe doiring on the whole table
+
+print(trips.iloc[0])
+
+
 
 
 
