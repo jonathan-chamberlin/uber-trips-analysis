@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+
 
 trips = pd.read_csv(r"C:\Repositories for Git\uber-trips-analysis-folder\uber-raw-data-sep14.csv")
 
@@ -110,6 +112,9 @@ overall_stats_message = f"Mean trips per day: {mean_trips_per_day}\nMedian Trips
 print(overall_stats_message)
 
 # Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
+
+trips_per_day.plot.bar()
+plt.show()
 
 # Problem 9: Create Heatmap of trips by hour and day of week, where the x axis is days of the week and the y axis is hour of the day, and there are cells with the cumulative total of trips taken that weekday and within that hour. Then color the cells based on value, where the lowest are red, average are white, and darkest are green.
 
