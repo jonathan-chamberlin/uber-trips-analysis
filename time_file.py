@@ -134,7 +134,7 @@ trips_per_day.plot.bar()
 # trips['Weekday'] = trips['Date'].apply(lambda n: pd.to_datetime(n).day_name())
 # ^ LEFT OFF at this point the code is taking a while to run and the thing below is not printing. So my goal is to complete the operation of adding a column for the Weekday. I should try it on just a few rows to make sure it works befroe doiring on the whole table
 
-
+"""Code I used to figure out how to get a column of weekdays. Using .apply() on every row was so slow it wasn't working. So instead I ran the .dt.day_name() on just the trips['Date/Time'] column. That was way faster."""
 print((trips.iloc[0]['Date']))
 
 print(pd.to_datetime(trips.iloc[0]['Date']))
@@ -147,7 +147,6 @@ print(pd.to_datetime(trips.iloc[0]['Date']).day_name())
 # this line takes way too long to run
 # trips['Weekday'] = trips['Date'].apply(lambda n: pd.to_datetime(trips.iloc[n]['Date']).day_name())
 
-# trips['Date']=pd.to_datetime(trips['Date']) # convert entire column to date time format
 trips['Date/Time'] = pd.to_datetime(trips['Date/Time'])
 
 
