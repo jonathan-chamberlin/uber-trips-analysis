@@ -37,7 +37,15 @@ def date_format(date: str) -> str:
 trips['Date'] = trips['Date/Time'].apply(lambda n: date_format(n.split(' ')[0]))
     # Builds a column to the trips table. From the Date/Time column, first it grabs the date, then uses formatted_date to put the date into a consistent format. Assumes all years are 4 digits.
 
+trips['Time'] = trips['Date/Time'].apply(lambda n: n.split(' ')[1])
+#build column 'Time' as the time of the trip 
 
+trips['Hour'] = trips['Time'].apply(lambda n: n.split(':')[0])
+
+
+
+
+"""THE FOLLOWING CODE WAS COMMENTED OUT BECAUSE IT TAKES A WHILE TO RUN
 busiest_date = trips['Date'].value_counts().idxmax()
 busiest_date_value = trips['Date'].value_counts().iloc[0]
 
@@ -54,8 +62,7 @@ least_busy_date_message = f"The least date was {least_busy_date}. It had {least_
 print(least_busy_date_message)
 
 # Problem 3: Find Busiest time of the day
-trips['Time'] = trips['Date/Time'].apply(lambda n: n.split(' ')[1])
-#build column 'Time' as the time of the trip 
+
 
 busiest_minute = trips['Time'].value_counts().idxmax()
 trips_during_busiest_minute = trips['Time'].value_counts().iloc[0]
@@ -74,7 +81,6 @@ print(least_busy_minute_message)
 
 # Problem 5: Find busiest hour
 
-trips['Hour'] = trips['Time'].apply(lambda n: n.split(':')[0])
 
 '''Test to verify that I created the Hour column correctly
 for n in range(1,100,1):
@@ -114,9 +120,9 @@ print(overall_stats_message)
 
 # Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
 
-"""
+
 trips_per_day.plot.bar()
-plt.show()
+# plt.show()
 """
 
 # Problem 9: Create Heatmap of trips by hour and day of week, where the x axis is days of the week and the y axis is hour of the day, and there are cells with the cumulative total of trips taken that weekday and within that hour. Then color the cells based on value, where the lowest are red, average are white, and darkest are green.
@@ -125,13 +131,29 @@ plt.show()
 
 # add column for weekday
 
-trips['Weekday'] = trips['Date'].apply(lambda n: pd.to_datetime(n).day_name())
+# trips['Weekday'] = trips['Date'].apply(lambda n: pd.to_datetime(n).day_name())
 # ^ LEFT OFF at this point the code is taking a while to run and the thing below is not printing. So my goal is to complete the operation of adding a column for the Weekday. I should try it on just a few rows to make sure it works befroe doiring on the whole table
 
-print(trips.iloc[0])
+
+print((trips.iloc[0]['Date']))
+
+print(pd.to_datetime(trips.iloc[0]['Date']))
 
 
+print(pd.to_datetime(trips.iloc[0]['Date']).day_name())
 
+print(pd.to_datetime(trips.iloc[0]['Date']).day_name())
+
+# this line takes way too long to run
+# trips['Weekday'] = trips['Date'].apply(lambda n: pd.to_datetime(trips.iloc[n]['Date']).day_name())
+
+# trips['Date']=pd.to_datetime(trips['Date']) # convert entire column to date time format
+trips['Date/Time'] = pd.to_datetime(trips['Date/Time'])
+
+
+trips['Weekday'] = trips['Date/Time'].dt.day_name()
+
+print(trips.head(2))
 
 
 
