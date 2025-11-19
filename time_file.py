@@ -153,16 +153,13 @@ print(pd.to_datetime(trips.iloc[0]['Date']).day_name())
 # """
 
 trips['Date/Time'] = pd.to_datetime(trips['Date/Time'])
-
-
 trips['Weekday'] = trips['Date/Time'].dt.day_name()
-
 print(trips.head(2))
 
 
 
 
 
-
+# LEFT OFF. Now that I have a column of weekdays, somehow I have to organize the aggreated total number of trips based on their value in the 'Hour' column and 'Weekday' column. Start by finding the number of trips for that have 'Hour' == 12 and 'Weekday' == 'Monday'. This will help me understand how to fetch that data. From there, I can store the data in a certain way that will allow me to create the heatmap.
 
 
