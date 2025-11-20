@@ -6,6 +6,29 @@ A data analysis project exploring temporal patterns in Uber ride data from Septe
 
 This project analyzes 1,028,136 Uber trip records from September 2014 to identify patterns in ride demand across different times and days. Using statistical analysis and heat map visualization, I uncovered key insights about peak demand periods that could inform driver allocation and operational strategies.
 
+## 📈 Visualization
+
+### Trip Volume Heatmap
+
+The primary visualization is a 24x7 heatmap showing trip counts for each hour-weekday combination:
+
+- **X-axis:** Days of the week (Monday through Sunday)
+- **Y-axis:** Hours of the day (00:00 - 23:00)
+- **Color scale:** 
+  - Red: Low demand (minimum 597 trips)
+  - White: Average demand (centered at ~6,483 trips)
+  - Green: High demand (maximum 12,369 trips at Tuesday 5 PM)
+- **Cell values:** Formatted with commas for readability (e.g., "12,369")
+
+**Key patterns visible in the heatmap:**
+- Intense green during weekday evenings (5-7 PM)
+- Deep red during early morning hours (2-5 AM)
+- Gradient shift showing weekend demand extending later into the night
+- Friday-Saturday late night activity extension through midnight
+
+![Uber Trips Heatmap](images/uber_trips_heatmap.png)
+*Heatmap showing trip volume patterns across hours and days of the week*
+
 ## 💡 Business Insights & Recommendations
 
 ### Demand Profile Analysis
@@ -86,29 +109,6 @@ The heatmap analysis reveals patterns:
 - **matplotlib** - Data visualization
 - **seaborn** - Statistical visualizations (heatmap)
 - **pytest** - Unit testing
-
-## 📈 Visualization
-
-### Trip Volume Heatmap
-
-The primary visualization is a 24x7 heatmap showing trip counts for each hour-weekday combination:
-
-- **X-axis:** Days of the week (Monday through Sunday)
-- **Y-axis:** Hours of the day (00:00 - 23:00)
-- **Color scale:** 
-  - Red: Low demand (minimum 597 trips)
-  - White: Average demand (centered at ~6,483 trips)
-  - Green: High demand (maximum 12,369 trips at Tuesday 5 PM)
-- **Cell values:** Formatted with commas for readability (e.g., "12,369")
-
-**Key patterns visible in the heatmap:**
-- Intense green during weekday evenings (5-7 PM)
-- Deep red during early morning hours (2-5 AM)
-- Gradient shift showing weekend demand extending later into the night
-- Friday-Saturday late night activity extension through midnight
-
-![Uber Trips Heatmap](images/uber_trips_heatmap.png)
-*Heatmap showing trip volume patterns across hours and days of the week*
 
 ## Key Features
 
