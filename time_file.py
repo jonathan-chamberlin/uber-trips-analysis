@@ -209,8 +209,7 @@ print(max_value_of_trips_pivot)
 print("Min: ")
 print(min_value_of_trips_pivot)
 
-trips_heatmap = sns.heatmap(data = trips_pivot, cmap = color_map, annot = True, linewidths = 10, linecolor = "black", center = trips_pivot_center)
-
-
+trips_heatmap = sns.heatmap(data = trips_pivot, cmap = color_map, annot = True, linewidths = 1, linecolor = "black", center = trips_pivot_center, fmt = ',')
 
 plt.show()
+
