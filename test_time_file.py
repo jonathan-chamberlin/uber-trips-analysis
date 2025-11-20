@@ -10,9 +10,9 @@ def test_date_format() -> None:
     assert date_format("10/20/2014") == "2014/10/20"
 
 def test_hour_format() -> None:
-    assert hour_format(0) == "00"
-    assert hour_format(1) == "01"
-    assert hour_format(2) == "02"
-    assert hour_format(10) == "10"
-    assert hour_format(15) == "15"
-    assert hour_format(20) == "20"
+    assert hour_format(0) == "00:00"
+    assert hour_format(1) == "01:00"
+    assert hour_format(2) == "02:00"
+    assert hour_format(10) == "10:00"
+    assert hour_format(15) == "15:00"
+    assert hour_format(20) == "20:00"

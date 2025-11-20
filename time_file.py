@@ -171,9 +171,9 @@ def hour_format(hour: int) -> str:
     hour_string = str(hour)
     
     if len(hour_string) == 1:
-        formatted_hour = f"0{hour_string}"
+        formatted_hour = f"0{hour_string}:00"
     else:
-        formatted_hour = hour_string
+        formatted_hour = f"{hour_string}:00"
     
     return formatted_hour
 
