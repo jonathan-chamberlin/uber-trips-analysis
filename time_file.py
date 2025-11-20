@@ -197,6 +197,8 @@ print(trips_pivot)
 
 color_map = sns.diverging_palette(0, 120, s=80, l=55, center='light', as_cmap=True)
 
+
+# for the center input of sns.heatmap, I need to create a variable that is defined as the average of the max and min values in trips_pivot
 max_value_of_trips_pivot = trips_pivot.max().max() #expect 12369
 min_value_of_trips_pivot = trips_pivot.min().min() #expect 597
 
@@ -209,6 +211,6 @@ print(min_value_of_trips_pivot)
 
 trips_heatmap = sns.heatmap(data = trips_pivot, cmap = color_map, annot = True, linewidths = 10, linecolor = "black", center = trips_pivot_center)
 
-# for the center, I need to create a variable that is defined as the average of the max and min values in trips_pivot
+
 
 plt.show()
