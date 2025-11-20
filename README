@@ -107,7 +107,7 @@ The primary visualization is a 24x7 heatmap showing trip counts for each hour-we
 - Gradient shift showing weekend demand extending later into the night
 - Friday-Saturday late night activity extension through midnight
 
-![Uber Trips Heatmap](uber_trips_heatmap.png)
+![Uber Trips Heatmap](images/uber_trips_heatmap.png)
 *Heatmap showing trip volume patterns across hours and days of the week*
 
 ## Key Features
@@ -227,25 +227,25 @@ Results & Insights
 ## 🔮 Future Enhancements
 
 ### Analysis Extensions
-- [ ] **Geographic clustering** using Lat/Lon to identify popular pickup zones
-- [ ] **Base company analysis** to compare market share across providers
-- [ ] **Time series decomposition** to identify weekly trends across the month
-- [ ] **Weather correlation** by integrating weather API data
-- [ ] **Demand forecasting** using historical patterns for prediction
-- [ ] **Price elasticity modeling** to optimize dynamic pricing strategies
+- **Geographic clustering** using Lat/Lon to identify popular pickup zones
+- **Base company analysis** to compare market share across providers
+- **Time series decomposition** to identify weekly trends across the month
+- **Weather correlation** by integrating weather API data
+- **Demand forecasting** using historical patterns for prediction
+- **Price elasticity modeling** to optimize dynamic pricing strategies
 
 ### Technical Improvements
-- [ ] **Interactive dashboard** using Plotly Dash or Streamlit
-- [ ] **Automated reporting** that generates insights summary
-- [ ] **Performance optimization** for even larger datasets
-- [ ] **Additional visualizations:** geographic heat maps, time series plots, distribution histograms
-- [ ] **Database integration** for handling multiple months of data
+- **Interactive dashboard** using Plotly Dash or Streamlit
+- **Automated reporting** that generates insights summary
+- **Performance optimization** for even larger datasets
+- **Additional visualizations:** geographic heat maps, time series plots, distribution histograms
+- **Database integration** for handling multiple months of data
 
 ### Code Enhancements
-- [ ] Configuration file for file paths and parameters
-- [ ] Logging implementation for debugging and monitoring
-- [ ] Command-line arguments for flexible analysis parameters
-- [ ] Export functionality for analysis results
+- Configuration file for file paths and parameters
+- Logging implementation for debugging and monitoring
+- Command-line arguments for flexible analysis parameters
+- Export functionality for analysis results
 
 ## 🧪 Testing
 
