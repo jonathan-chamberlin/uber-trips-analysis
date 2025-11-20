@@ -183,7 +183,8 @@ trips_pivot = trips.pivot_table(
     index='Hour',       # What becomes the rows
     columns='Weekday',         # What becomes the columns
     aggfunc='size'         # How to combine multiple values
-)
+).reindex(labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], axis = 1)
+# the .reidex() reorders the x axis of weekdays so they appear chronologically, not alphabetically.
 
 
 pd.set_option("display.max_rows", 59) #Make it so all rows are displayed in the terminal
