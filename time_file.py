@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 trips = pd.read_csv(r"C:\Repositories for Git\uber-trips-analysis-folder\uber-raw-data-sep14.csv")
@@ -190,3 +191,14 @@ trips_pivot = trips.pivot_table(
 pd.set_option("display.max_rows", 59) #Make it so all rows are displayed in the terminal
 print("Pivot table:")
 print(trips_pivot)
+
+
+# Now that I have this pivot table data displaying in my termianl correctly, ordered, I want to produce a heatmap where each cell value is colored based on the value. For values near the bottom of the range, I want them colored red. For values near the middle of the range, I want white. For values near the top of the range, I want green. I want the values color to be on a gradient according to what it's value is compared to the range of all cell values. For example, the minimum cell value should be the most red. The maximum cell value should be the most green. And the value closest to the mean of all the cell values should be closest to white
+
+color_map = sns.diverging_palette(0, 120, s=80, l=55, center='light', as_cmap=True)
+
+trips_heatmap = sns.heatmap(data = trips_pivot, cmap = color_map, annot = True, linewidths = 10, linecolor = "black", center = 0)
+
+# for the center, I need to create a variable that is defined as the average of the max and min values in trips_pivot
+
+plt.show()
