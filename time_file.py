@@ -185,5 +185,7 @@ trips_pivot = trips.pivot_table(
     aggfunc='size'         # How to combine multiple values
 )
 
+
+pd.set_option("display.max_rows", 59) #Make it so all rows are displayed in the terminal
 print("Pivot table:")
 print(trips_pivot)
