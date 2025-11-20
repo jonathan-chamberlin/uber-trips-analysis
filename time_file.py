@@ -154,7 +154,7 @@ print(pd.to_datetime(trips.iloc[0]['Date']).day_name())
 
 trips['Date/Time'] = pd.to_datetime(trips['Date/Time'])
 trips['Weekday'] = trips['Date/Time'].dt.day_name()
-print(trips.head(2))
+
 
 
 
@@ -176,7 +176,8 @@ def hour_format(hour: int) -> str:
     
     return formatted_hour
 
-
+# transform 'Hour' column using hour_format()
+trips['Hour'] = trips['Hour'].apply(hour_format)
 
 trips_pivot = trips.pivot_table(
     index='Hour',       # What becomes the rows
