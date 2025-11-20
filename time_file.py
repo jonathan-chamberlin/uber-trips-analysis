@@ -218,5 +218,7 @@ plt.xlabel('Day of Week', fontsize=12)
 plt.ylabel('Hour of Day', fontsize=12)
 plt.tight_layout()
 
+
+plt.savefig('uber_trips_heatmap.png', dpi=300, bbox_inches='tight')
 plt.show()
 
