@@ -162,6 +162,22 @@ print(trips.head(2))
 
 # LEFT OFF. Now that I have a column of weekdays, somehow I have to organize the aggreated total number of trips based on their value in the 'Hour' column and 'Weekday' column. Start by finding the number of trips for that have 'Hour' == 12 and 'Weekday' == 'Monday'. This will help me understand how to fetch that data. From there, I can store the data in a certain way that will allow me to create the heatmap.
 
+# Wait after making trips_pivot, the rows of Hours weren't sorted properly, so their current order is 0,1,10,11,23,3,4,5... So for single digit hours, I'll have to add a zero before them.
+
+def hour_format(hour: int) -> str:
+    '''Takes a hour in the format of int , and if it's a single digit, it adds a zero before it and makes it a string'''
+    
+    hour_string = str(hour)
+    
+    if len(hour_string) == 1:
+        formatted_hour = f"0{hour_string}"
+    else:
+        formatted_hour = hour_string
+    
+    return formatted_hour
+
+
+
 trips_pivot = trips.pivot_table(
     index='Hour',       # What becomes the rows
     columns='Weekday',         # What becomes the columns
