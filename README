@@ -1,0 +1,301 @@
+# Uber Trips Analysis - September 2014
+
+A data analysis project exploring temporal patterns in Uber ride data from September 2014, using Python, pandas, and data visualization to uncover insights about rider behavior and demand patterns.
+
+## 📊 Project Overview
+
+This project analyzes 1,028,136 Uber trip records from September 2014 to identify patterns in ride demand across different times and days. Using statistical analysis and heat map visualization, I uncovered key insights about peak demand periods that could inform driver allocation and operational strategies.
+
+## 💡 Business Insights & Recommendations
+
+### Demand Profile Analysis
+
+**Two Distinct Usage Patterns:**
+1. **Weekdays (Monday-Thursday):** Commute-driven demand with moderate morning rush (6-9 AM) and strong evening rush (3-10 PM)
+2. **Weekends (Friday-Saturday):** Maintain weekday peak hours PLUS extended high-demand period lasting until midnight
+
+**Critical Finding:** Evening demand (3-10 PM) significantly exceeds morning demand, representing the primary revenue opportunity.
+
+### Strategic Recommendations
+
+#### 1. Dynamic Pricing Experiments
+
+**Evening Rush Hour Premium (Weekdays 5-7 PM)**
+- **Hypothesis:** Peak demand period can sustain higher prices without significant volume loss
+- **Experiment:** Implement 15-20% price increase during 5-7 PM Monday-Thursday
+- **Success Metrics:** 
+  - Monitor trip volume decline vs. revenue increase
+  - Calculate net profit impact
+  - Track customer retention and satisfaction scores
+- **Expected Outcome:** Higher per-trip revenue may offset minor volume decreases, increasing total profits
+
+**Early Morning Discount (12-5 AM All Days)**
+- **Hypothesis:** Price sensitivity is high during low-demand hours; lower prices could stimulate latent demand
+- **Experiment:** Implement 25-30% price reduction during 12-5 AM period
+- **Success Metrics:**
+  - Measure trip volume increase percentage
+  - Calculate total revenue change (volume increase vs. price decrease)
+  - Track new vs. existing customer acquisition
+- **Expected Outcome:** Lower per-trip revenue could be offset by sufficient volume increase, improving driver utilization during otherwise slow periods
+
+#### 2. Operational Planning
+
+**Maintenance Windows:** Schedule system updates and maintenance during 2-5 AM when demand is at absolute minimum
+
+**Weekend Incentives:** Offer higher driver incentives for Friday-Saturday late hours (9 PM-midnight) to maintain adequate supply during extended demand periods
+
+## 🔍 Key Findings
+
+### Hourly Patterns
+- **Peak Hour:** 6:00 PM (18:00) with **75,040 trips** across the entire month
+- **Quietest Hour:** 2:00 AM with **10,702 trips**
+- **Busiest Minute:** 6:12 PM (18:12:00) with 1,380 trips
+- **Quietest Minute:** 4:17 AM with only 141 trips
+
+### Daily Patterns
+- **Busiest Date:** September 13, 2014 with **43,205 trips**
+- **Slowest Date:** September 1, 2014 with **19,961 trips**
+- **Mean trips per day:** 34,271
+- **Median trips per day:** 35,046
+- **Standard deviation:** 5,465 trips
+
+### Weekly Demand Patterns
+
+The heatmap analysis reveals patterns:
+
+**Weekday Rush Hours (Monday-Thursday)**
+- **Morning rush:** 6-9 AM shows moderate demand
+- **Evening rush:** 3-10 PM shows significantly higher demand (primary peak)
+- Evening demand is substantially larger than morning demand
+
+**Weekend Patterns (Friday-Sunday)**
+- **Extended peak hours:** 3 PM - 12 AM (midnight)
+- Friday and Saturday maintain the same high-demand afternoon/evening hours as weekdays, with additional sustained demand continuing until midnight
+- Sunday follows similar weekday pattern but with reduced overall volume
+
+**Overnight Period (All Days)**
+- **Minimal demand:** Midnight to 5 AM consistently shows the lowest trip volumes
+- Demand reaches its absolute minimum around 2-4 AM
+- Activity begins picking up after 5 AM on weekdays
+
+## 🛠️ Technical Implementation
+
+### Technologies Used
+- **Python 3.x** *(add your version)*
+- **pandas** - Data manipulation and analysis
+- **matplotlib** - Data visualization
+- **seaborn** - Statistical visualizations (heatmap)
+- **pytest** - Unit testing
+
+## 📈 Visualization
+
+### Trip Volume Heatmap
+
+The primary visualization is a 24x7 heatmap showing trip counts for each hour-weekday combination:
+
+- **X-axis:** Days of the week (Monday through Sunday)
+- **Y-axis:** Hours of the day (00:00 - 23:00)
+- **Color scale:** 
+  - Red: Low demand (minimum 597 trips)
+  - White: Average demand (centered at ~6,483 trips)
+  - Green: High demand (maximum 12,369 trips at Tuesday 5 PM)
+- **Cell values:** Formatted with commas for readability (e.g., "12,369")
+
+**Key patterns visible in the heatmap:**
+- Intense green during weekday evenings (5-7 PM)
+- Deep red during early morning hours (2-5 AM)
+- Gradient shift showing weekend demand extending later into the night
+- Friday-Saturday late night activity extension through midnight
+
+![Uber Trips Heatmap](uber_trips_heatmap.png)
+*Heatmap showing trip volume patterns across hours and days of the week*
+
+## Key Features
+
+### 1. Data Cleaning & Transformation
+- Parsed date/time strings into separate date, time, hour, and weekday components
+- Created custom formatting functions for consistent date format (YYYY/MM/DD)
+- Implemented hour formatting with leading zeros for proper alphabetical sorting
+- Converted strings to datetime objects for temporal operations
+
+### 2. Data Visualization
+- 24x7 heatmap showing trip volume by hour and day of week
+- Custom diverging color scheme (red-white-green) centered on midpoint
+- Comma-separated value formatting for readability
+- Chronologically ordered weekdays (Monday-Sunday) for intuitive interpretation
+
+### 3. Statistical Analysis
+- Frequency analysis using `.value_counts()` to identify peak periods
+- Descriptive statistics (mean, median, standard deviation) for demand variability
+- Min/max identification across multiple dimensions (day, hour, minute)
+- Pivot table aggregation for cross-tabulation analysis
+
+### 4. Code Quality
+- Modular helper functions (`date_format()`, `hour_format()`)
+- Comprehensive unit tests using pytest
+- Clear documentation and inline comments
+- Type hints for function parameters
+
+## 🚀 How to Run
+
+### Prerequisites
+```bash
+pip install pandas matplotlib seaborn pytest
+```
+
+### Running the Analysis
+```bash
+# Navigate to project directory
+cd uber-trips-analysis-folder/uber-trips-analysis
+
+# Run the main analysis (generates heatmap)
+python time_file.py
+
+# Run unit tests
+pytest test_time_file.py
+```
+
+### Dataset
+The analysis uses `uber-raw-data-sep14.csv` containing September 2014 Uber trip data with columns:
+- `Date/Time` - Timestamp of trip pickup
+- `Lat` - Pickup latitude coordinate
+- `Lon` - Pickup longitude coordinate  
+- `Base` - TLC base company code
+
+**Dataset size:** 1,028,136
+
+## 📁 Project Structure
+```
+uber-trips-analysis-folder/
+├── uber-trips-analysis/
+│   ├── time_file.py              # Main analysis script
+│   ├── test_time_file.py         # Unit tests for helper functions
+│   └── uber-raw-data-sep14.csv   # Dataset (not included in repo)
+├── .venv/                         # Virtual environment
+└── README.md                      # Project documentation
+```
+### Key Technical Decisions
+
+**Why vectorized operations over loops?**
+- Initial attempt using `.apply()` with lambda functions was extremely slow on 1M rows
+- Switched to pandas datetime accessor (`.dt`) for 100x+ speed improvement
+- Demonstrates understanding of pandas optimization best practices
+
+**Why custom color scheme?**
+- Diverging palette (red-white-green) makes anomalies immediately visible
+- Centered on midpoint ensures balanced color distribution
+- Green/red associations align with business context (high/low demand)
+
+**Why pivot table structure?**
+- Enables efficient cross-dimensional aggregation
+- Creates matrix format ideal for heatmap visualization
+- Built-in pandas functionality ensures correctness
+
+## 📝 Methodology
+
+### Analysis Pipeline
+```
+Raw CSV Data (1M+ rows)
+    ↓
+[1] Data Loading
+    • Read CSV with pandas
+    • Initial data inspection
+    ↓
+[2] Feature Engineering
+    • Extract date components from Date/Time
+    • Create Hour, Time, Date, Weekday columns
+    • Format values for proper sorting
+    ↓
+[3] Frequency Analysis
+    • Count trips by various dimensions
+    • Identify max/min across categories
+    • Calculate statistical summaries
+    ↓
+[4] Pivot Table Construction
+    • Aggregate by Hour × Weekday
+    • Create matrix structure for heatmap
+    • Reorder for chronological display
+    ↓
+[5] Visualization
+    • Generate diverging color scheme
+    • Create annotated heatmap
+    • Apply formatting for readability
+    ↓
+Results & Insights
+```
+
+## 🔮 Future Enhancements
+
+### Analysis Extensions
+- [ ] **Geographic clustering** using Lat/Lon to identify popular pickup zones
+- [ ] **Base company analysis** to compare market share across providers
+- [ ] **Time series decomposition** to identify weekly trends across the month
+- [ ] **Weather correlation** by integrating weather API data
+- [ ] **Demand forecasting** using historical patterns for prediction
+- [ ] **Price elasticity modeling** to optimize dynamic pricing strategies
+
+### Technical Improvements
+- [ ] **Interactive dashboard** using Plotly Dash or Streamlit
+- [ ] **Automated reporting** that generates insights summary
+- [ ] **Performance optimization** for even larger datasets
+- [ ] **Additional visualizations:** geographic heat maps, time series plots, distribution histograms
+- [ ] **Database integration** for handling multiple months of data
+
+### Code Enhancements
+- [ ] Configuration file for file paths and parameters
+- [ ] Logging implementation for debugging and monitoring
+- [ ] Command-line arguments for flexible analysis parameters
+- [ ] Export functionality for analysis results
+
+## 🧪 Testing
+
+Implemented unit tests for data transformation functions:
+```python
+# test_time_file.py
+def test_date_format():
+    """Ensures consistent YYYY/MM/DD format with zero-padding"""
+    assert date_format("9/3/2014") == "2014/09/03"
+    assert date_format("10/20/2014") == "2014/10/20"
+
+def test_hour_format():
+    """Ensures proper hour formatting with leading zeros"""
+    assert hour_format(1) == "01:00"
+    assert hour_format(15) == "15:00"
+```
+
+Run tests with: `pytest test_time_file.py`
+
+## 📚 What I Learned
+
+### Technical Skills
+- Processing large datasets efficiently with pandas (1M+ rows)
+- Creating complex visualizations with seaborn and matplotlib
+- Implementing unit tests for data transformation functions
+- Using datetime operations for temporal analysis
+- Optimizing code for performance (vectorization vs. iteration)
+
+### Data Analysis Skills
+- Identifying patterns across multiple temporal dimensions
+- Designing visualizations that communicate insights clearly
+- Calculating and interpreting descriptive statistics
+- Making data-driven recommendations for business operations
+- Formulating testable hypotheses for pricing experiments
+
+### Software Engineering Practices
+- Writing modular, reusable functions
+- Implementing proper testing procedures
+- Using virtual environments for dependency management
+- Documenting code and analysis clearly
+
+## 📧 Contact
+
+**Jonathan Chamberlin**  
+📧 jcahm17x@gmail.com  
+💼 [LinkedIn](https://www.linkedin.com/in/jonathan-chamberlin-bbb661241/)  
+🐙 [GitHub](https://github.com/jonathan-chamberlin)
+
+---
+
+**Dataset Source:** Uber trip data for September 2014  
+**License:** MIT  
+**Note:** This is an educational portfolio project demonstrating data analysis capabilities.

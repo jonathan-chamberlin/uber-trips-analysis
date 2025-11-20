@@ -5,6 +5,8 @@ import seaborn as sns
 
 trips = pd.read_csv(r"C:\Repositories for Git\uber-trips-analysis-folder\uber-raw-data-sep14.csv")
 
+# Problem 0: Find number of records
+print(f"Total number of trips in dataset: {len(trips):,}")
 
 #Problem 1: find busiest date
 
@@ -201,12 +203,20 @@ min_value_of_trips_pivot = trips_pivot.min().min() #expect 597
 
 trips_pivot_center = (max_value_of_trips_pivot + min_value_of_trips_pivot)/2
 
-print("Max: ")
+print("Max value of trips in pivot table: ")
 print(max_value_of_trips_pivot)
-print("Min: ")
+print("Min value of trips in pivot table: ")
 print(min_value_of_trips_pivot)
 
+plt.figure(figsize=(12, 10))
+
 trips_heatmap = sns.heatmap(data = trips_pivot, cmap = color_map, annot = True, linewidths = 1, linecolor = "black", center = trips_pivot_center, fmt = ',')
+
+# formatting the heatmap better
+plt.title('Uber Trips by Hour and Day of Week - September 2014', fontsize=16, pad=20)
+plt.xlabel('Day of Week', fontsize=12)
+plt.ylabel('Hour of Day', fontsize=12)
+plt.tight_layout()
 
 plt.show()
 
