@@ -212,7 +212,7 @@ plt.figure(figsize=(12, 10))
 
 trips_heatmap = sns.heatmap(data = trips_pivot, cmap = color_map, annot = True, linewidths = 1, linecolor = "black", center = trips_pivot_center, fmt = ',')
 
-# formatting the heatmap better
+# formatted the heatmap better
 plt.title('Uber Trips by Hour and Day of Week - September 2014', fontsize=16, pad=20)
 plt.xlabel('Day of Week', fontsize=12)
 plt.ylabel('Hour of Day', fontsize=12)
