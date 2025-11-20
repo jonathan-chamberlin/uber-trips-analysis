@@ -184,6 +184,8 @@ trips_pivot = trips.pivot_table(
 
 
 pd.set_option("display.max_rows", 59) #Make it so all rows are displayed in the terminal
+pd.set_option("display.max_columns", 10) #Make it so all rows are displayed in the terminal
+
 print("Pivot table:")
 print(trips_pivot)
 
