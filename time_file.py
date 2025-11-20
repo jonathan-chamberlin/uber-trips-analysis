@@ -46,7 +46,7 @@ trips['Hour'] = trips['Time'].apply(lambda n: n.split(':')[0])
 
 
 
-"""THE FOLLOWING CODE WAS COMMENTED OUT BECAUSE IT TAKES A WHILE TO RUN
+
 busiest_date = trips['Date'].value_counts().idxmax()
 busiest_date_value = trips['Date'].value_counts().iloc[0]
 
@@ -119,12 +119,7 @@ overall_stats_message = f"Mean trips per day: {mean_trips_per_day}\nMedian Trips
 
 print(overall_stats_message)
 
-# Problem 8: Identify trends over the month (increasing/decreasing demand) by creating a bar chart which shows trip volume each day.
 
-
-trips_per_day.plot.bar()
-# plt.show()
-"""
 
 # Problem 9: Create Heatmap of trips by hour and day of week, where the x axis is days of the week and the y axis is hour of the day, and there are cells with the cumulative total of trips taken that weekday and within that hour. Then color the cells based on value, where the lowest are red, average are white, and darkest are green.
 
@@ -161,9 +156,9 @@ trips['Weekday'] = trips['Date/Time'].dt.day_name()
 
 
 
-# LEFT OFF. Now that I have a column of weekdays, somehow I have to organize the aggreated total number of trips based on their value in the 'Hour' column and 'Weekday' column. Start by finding the number of trips for that have 'Hour' == 12 and 'Weekday' == 'Monday'. This will help me understand how to fetch that data. From there, I can store the data in a certain way that will allow me to create the heatmap.
+# Now that I have a column of weekdays, somehow I have to organize the aggreated total number of trips based on their value in the 'Hour' column and 'Weekday' column. Start by finding the number of trips for that have 'Hour' == 12 and 'Weekday' == 'Monday'. This will help me understand how to fetch that data. From there, I can store the data in a certain way that will allow me to create the heatmap.
 
-# Wait after making trips_pivot, the rows of Hours weren't sorted properly, so their current order is 0,1,10,11,23,3,4,5... So for single digit hours, I'll have to add a zero before them.
+# After making trips_pivot, the rows of Hours weren't sorted properly, so their current order is 0,1,10,11,23,3,4,5... So for single digit hours, I'll have to add a zero before them.
 
 def hour_format(hour: int) -> str:
     '''Takes a hour in the format of int , and if it's a single digit, it adds a zero before it and makes it a string'''
